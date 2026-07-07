@@ -90,12 +90,15 @@ models = {
     "Random Forest":
         RandomForestClassifier(random_state=42),
 
- "Extra Trees":
-    ExtraTreesClassifier(
-        n_estimators=300,
-        random_state=42,
-        n_jobs=-1
-    ),
+    "Extra Trees":
+        ExtraTreesClassifier(
+            n_estimators=100,
+            max_depth=20,
+            min_samples_split=5,
+            min_samples_leaf=2,
+            random_state=42,
+            n_jobs=-1
+        ),
 
     "Gradient Boosting":
         GradientBoostingClassifier(random_state=42),
@@ -189,9 +192,10 @@ print(results_df)
 # Save Best Model
 # ============================
 
-joblib.dump(best_model,
-            "saved_models/best_model.pkl")
-
+joblib.dump(
+    best_model,
+    "saved_models/best_model.pkl",
+    compress=3)
 joblib.dump(amount_scaler, "saved_models/amount_scaler.pkl")
 joblib.dump(time_scaler, "saved_models/time_scaler.pkl")
 

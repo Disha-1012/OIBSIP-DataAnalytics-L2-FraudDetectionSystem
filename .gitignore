@@ -20,13 +20,7 @@ env/
 # macOS
 .DS_Store
 
-# Model cache
-*.joblib
-
 # Large datasets
 data/raw/creditcard.csv
 data/processed/
 
-# Large model files
-saved_models/*.pkl
-saved_models/*.joblib
