@@ -5,10 +5,12 @@ import matplotlib.pyplot as plt
 
 def show():
 
-    df = pd.read_csv("data/raw/creditcard.csv")
-
-    fraud = int(df["Class"].sum())
-    normal = len(df) - fraud
+    # Dataset Statistics (Hardcoded)
+    TOTAL_TRANSACTIONS = 284807
+    FRAUD_TRANSACTIONS = 492
+    LEGITIMATE_TRANSACTIONS = 284315
+    TOTAL_FEATURES = 31
+    FRAUD_PERCENTAGE = (FRAUD_TRANSACTIONS / TOTAL_TRANSACTIONS) * 100
 
     st.title("Fraud Detection Dashboard")
 
@@ -18,22 +20,22 @@ def show():
 
     c1.metric(
         "Transactions",
-        f"{len(df):,}"
+        f"{TOTAL_TRANSACTIONS:,}"
     )
 
     c2.metric(
         "Fraud",
-        fraud
+        f"{FRAUD_TRANSACTIONS:,}"
     )
 
     c3.metric(
         "Legitimate",
-        normal
+        f"{LEGITIMATE_TRANSACTIONS:,}"
     )
 
     c4.metric(
         "Fraud %",
-        f"{fraud/len(df)*100:.3f}%"
+        f"{FRAUD_PERCENTAGE:.3f}%"
     )
 
     st.markdown("---")
@@ -44,7 +46,23 @@ def show():
 
         st.subheader("Dataset Preview")
 
-        st.dataframe(df.head())
+        st.info(
+            """
+            Dataset is used only during model training.
+
+            The deployed application does not include the original dataset to keep the repository lightweight.
+
+            Dataset Summary:
+
+            • Total Transactions: 284,807
+
+            • Legitimate: 284,315
+
+            • Fraud: 492
+
+            • Features: 31
+            """
+        )
 
     with right:
 
@@ -89,7 +107,7 @@ def show():
     fig, ax = plt.subplots(figsize=(5, 5))
 
     ax.pie(
-        [normal, fraud],
+        [LEGITIMATE_TRANSACTIONS, FRAUD_TRANSACTIONS],
         labels=["Legitimate", "Fraud"],
         autopct="%1.2f%%",
         startangle=90

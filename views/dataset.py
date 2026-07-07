@@ -1,12 +1,4 @@
 import streamlit as st
-import pandas as pd
-
-from utils.visualization import (
-    class_distribution,
-    amount_distribution,
-    correlation_heatmap
-)
-
 
 def load_css():
     st.markdown(
@@ -161,8 +153,6 @@ def show():
 
     st.title("Dataset Overview")
 
-    df = pd.read_csv("data/raw/creditcard.csv")
-
     st.markdown("---")
 
     st.subheader("Dataset Shape")
@@ -171,12 +161,12 @@ def show():
 
     c1.metric(
         "Rows",
-        df.shape[0]
+        "284,807"
     )
 
     c2.metric(
         "Columns",
-        df.shape[1]
+        "31"
     )
 
     st.markdown("---")
@@ -185,10 +175,9 @@ def show():
 
     c1, c2, c3 = st.columns(3)
 
-    legitimate = (df["Class"] == 0).sum()
-    fraud = (df["Class"] == 1).sum()
-
-    fraud_percent = fraud / len(df) * 100
+    legitimate = 284315
+    fraud = 492
+    fraud_percent = (fraud / 284807) * 100
 
     c1.metric(
         "Legitimate",
@@ -209,22 +198,64 @@ def show():
 
     st.subheader("Dataset Preview")
 
-    st.dataframe(df.head(10))
+    st.info("""
+        The original dataset is intentionally excluded from deployment.
+
+        Dataset Information:
+
+        • Rows: 284,807
+
+        • Columns: 31
+
+        • PCA Features: V1–V28
+
+        • Target Column: Class
+
+        • Fraud Cases: 492
+        """)
 
     st.markdown("---")
 
     st.subheader("Class Distribution")
 
-    st.pyplot(class_distribution(df))
+    st.info("""
+        Dataset Summary
+
+        • Legitimate Transactions : 284,315
+
+        • Fraudulent Transactions : 492
+
+        • Fraud Percentage : 0.172%
+        """)
 
     st.markdown("---")
 
     st.subheader("Transaction Amount Distribution")
 
-    st.pyplot(amount_distribution(df))
+    st.info("""
+        The deployed application does not include the original dataset.
+
+        Therefore, the transaction amount distribution chart is not displayed.
+        """)
 
     st.markdown("---")
 
-    with st.expander("Correlation Heatmap"):
+    with st.expander("Model Evaluation Charts"):
 
-        st.pyplot(correlation_heatmap(df))
+        st.image(
+            "saved_models/confusion_matrix.png",
+            caption="Confusion Matrix",
+            use_container_width=True
+        )
+
+        st.image(
+            "saved_models/roc_curve.png",
+            caption="ROC Curve",
+            use_container_width=True
+        )
+
+        st.image(
+            "saved_models/feature_importance.png",
+            caption="Feature Importance",
+            use_container_width=True
+        )
