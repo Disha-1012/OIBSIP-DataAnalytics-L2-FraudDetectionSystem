@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+
+# Streamlit cache
+.streamlit/
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Model cache
+*.joblib
+
+# Large datasets
+data/raw/creditcard.csv
+data/processed/
+
+# Large model files
+saved_models/*.pkl
+saved_models/*.joblib
