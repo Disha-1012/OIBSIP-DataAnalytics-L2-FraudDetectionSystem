@@ -6,9 +6,9 @@ A Machine Learning-based web application that detects fraudulent credit card tra
 
 ## 🚀 Live Demo
 
-**🌐 Streamlit App:** *(Add your deployed Streamlit link here)*
+**🌐 Streamlit App:** https://oibsip-fraud-detection-system-bc5whayl2pbuvwfcu3pphe.streamlit.app/
 
-**💻 GitHub Repository:** *(Add your GitHub repository link here)*
+**💻 GitHub Repository:** https://github.com/Disha-1012/OIBSIP-DataAnalytics-L2-FraudDetectionSystem
 
 ---
 
@@ -212,7 +212,7 @@ Fraud-Detection-System/
 ## 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Fraud-Detection-System.git
+git clone https://github.com/Disha-1012/OIBSIP-DataAnalytics-L2-FraudDetectionSystem
 ```
 
 ---
@@ -329,10 +329,6 @@ pip install -r requirements.txt
 # 👩‍💻 Developer
 
 ## Disha Dutta
-
-**GitHub:** *(Add your GitHub Profile Link)*
-
-**LinkedIn:** *(Add your LinkedIn Profile Link)*
 
 ---
 
